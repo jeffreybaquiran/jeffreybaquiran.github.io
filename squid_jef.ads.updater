@@ -2,7 +2,7 @@
 
 curl -sS -L --compressed "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml&showintro=0&mimetype=plaintext" > /mnt/sdb1/files/jef/bin/squid/ad_block.txt 
 
-curl -o /mnt/sdb1/files/jef/bin/squid/jefad_block.txt "https://jeffreybaquiran.github.io/squid_jef.ads" 
+curl -o /mnt/sdb1/files/jef/bin/squid/jefad_block.txt https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/squid_jef.ads.updater
 
 /opt/etc/init.d/S80squid stop
 
