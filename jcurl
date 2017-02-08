@@ -1,7 +1,8 @@
 #!/bin/bash
 
-### Created by Jef.
+### jcurl created by Jef
 ### This intended for his own use.
+
 
 option1=$1
 list1="$2"
