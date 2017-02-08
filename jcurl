@@ -8,8 +8,16 @@ logfile1="$logfiledir1/jcurl/jcurl_`date +%Y-%m-%d_%H-%M-%S`.log"
 currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
 
 if [ -z $1  ]; then
-  echo "`date`: Error: No option input..."
+  echo "`date`"
+  echo "Error: No option input. Type help for manual."
   exit 0
+fi
+
+if [ $1 = "help"  ]; then
+  echo "To download single url"
+  echo "sudo jcurl -s [URL]"
+  echo "To download multiple url"
+  echo "sudo jcurl -l [ListFile]"
 fi
 
 cd /Users/$currentuser1/Downloads
