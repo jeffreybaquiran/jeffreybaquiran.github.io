@@ -1,5 +1,8 @@
 #!/bin/bash
 
+### Created by Jef
+### This intended for his own use.
+
 option1=$1
 list1="$2"
 logfiledir1="/Users/Shared/.jef"
@@ -15,9 +18,9 @@ fi
 
 if [ $1 = "help"  ]; then
   echo "To download single url"
-  echo "sudo jcurl -s [URL]"
+  echo "Example: sudo jcurl -s [URL]"
   echo "To download multiple url"
-  echo "sudo jcurl -l [ListFile]"
+  echo "Example: sudo jcurl -l [ListFile]"
 fi
 
 cd /Users/$currentuser1/Downloads
