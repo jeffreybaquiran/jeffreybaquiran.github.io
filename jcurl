@@ -1,7 +1,6 @@
 #!/bin/bash
 
 option1=$1
-download1="~/Downloads"
 list1="$2"
 logfiledir1="/Users/Shared/.jef"
 logfiledir2="/Users/Shared/.jef/jcurl"
