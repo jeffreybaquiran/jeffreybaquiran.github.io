@@ -10,6 +10,10 @@ currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
 cd /Users/$currentuser1/Downloads
 echo "Download folder is /Users/$currentuser1/Downloads"
 
+if [ $1 = ""  ]; then
+  echo "`date`: Error: No option input..."
+fi
+
 if [ ! -d $logfiledir1 ]; then
   echo "`date`: Folder $logfiledir1 not found..."
   echo "`date`: Creating folder $logfiledir1"
