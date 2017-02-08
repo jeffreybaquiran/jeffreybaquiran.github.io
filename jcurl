@@ -1,14 +1,14 @@
 #!/bin/bash
 
 option1=$1
+download1="~/Downloads"
 list1="$2"
 logfiledir1="/Users/Shared/.jef"
 logfiledir2="/Users/Shared/.jef/jcurl"
 logfile1="$logfiledir1/jcurl/jcurl_`date +%Y-%m-%d_%H-%M-%S`.log"
-currentuser1=$(id -un)
+currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
 
 cd /Users/$currentuser1/Downloads
-
 echo "Download folder is /Users/$currentuser1/Downloads"
 
 if [ ! -d $logfiledir1 ]; then
@@ -26,12 +26,12 @@ if [ ! -d $logfiledir2 ]; then
 fi
 
 if [[ $option1 = "-l"  ]]; then
-for i in $(cat $list1)
+for i in $(cat "$list1")
 	do
 		echo "`date`: Downloading from $list1"	>> ${logfile1}
 		echo " "
 		echo "`date`: Downloading $i"	>> ${logfile1}
-		curl --progress-bar -O -J -L $i &> /dev/stdout | tee -a ${logfile1}
+		curl --progress-bar -O -J -L $i >> ${logfile1}
 		echo " "
 		echo "`date`: Finished downloading $i"	>> ${logfile1}
 	done
@@ -40,7 +40,7 @@ fi
 if [[ $option1 = "-s"  ]]; then
 		echo "`date`: Downloading $2"	>> ${logfile1}
 		echo " "
-		curl --progress-bar -O -J -L $2 &> /dev/stdout | tee -a ${logfile1}
+		curl --progress-bar -O -J -L $2 >> ${logfile1}
 		echo " "
 		echo "`date`: Finished downloading $i"	>> ${logfile1}
 fi
