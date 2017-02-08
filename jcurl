@@ -21,6 +21,7 @@ if [ $1 = "help"  ]; then
   echo "Example: sudo jcurl -s [URL]"
   echo "To download multiple url"
   echo "Example: sudo jcurl -l [ListFile]"
+  exit 0
 fi
 
 cd /Users/$currentuser1/Downloads
