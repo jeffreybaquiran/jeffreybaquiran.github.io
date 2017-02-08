@@ -7,12 +7,13 @@ logfiledir2="/Users/Shared/.jef/jcurl"
 logfile1="$logfiledir1/jcurl/jcurl_`date +%Y-%m-%d_%H-%M-%S`.log"
 currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
 
+if [ -z $1  ]; then
+  echo "`date`: Error: No option input..."
+  exit 0
+fi
+
 cd /Users/$currentuser1/Downloads
 echo "Download folder is /Users/$currentuser1/Downloads"
-
-if [ ! -z $1  ]; then
-  echo "`date`: Error: No option input..."
-fi
 
 if [ ! -d $logfiledir1 ]; then
   echo "`date`: Folder $logfiledir1 not found..."
