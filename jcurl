@@ -9,6 +9,8 @@ currentuser1=$(id -un)
 
 cd /Users/$currentuser1/Downloads
 
+echo "Download folder is /Users/$currentuser1/Downloads"
+
 if [ ! -d $logfiledir1 ]; then
   echo "`date`: Folder $logfiledir1 not found..."
   echo "`date`: Creating folder $logfiledir1"
