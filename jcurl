@@ -55,7 +55,27 @@ for i in $(cat "$list1")
 fi
 
 if [[ $option1 = "-s"  ]]; then
-		echo "`date`: Downloading $2"	>> ${logfile1}
+    filename1=$(basename $2)
+
+    if [ ! -f $filename1 ]; then
+    echo "`date`: $filename1 not exist... Will download the file."
+    fi
+
+    size_remote1=$(curl -sI "$2" | awk '/Content-Length/ { print $2 }')
+    size_local1=$(stat -f '%z' "$filename1")
+
+    x=$(echo $size_remote1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
+    y=$(echo $size_local1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
+
+    echo "Filename is $filename1. Remote file size is $x. Local file is $y"
+
+    if [ "$x" = "$y" ]
+    then
+    echo "`date`: local file, $filename1 is same as remote file..."
+    exit 0
+    fi
+
+    echo "`date`: Downloading $2"	>> ${logfile1}
 		echo " "
 		curl --progress-bar -O -J -L $2 >> ${logfile1} &
 		echo " "
