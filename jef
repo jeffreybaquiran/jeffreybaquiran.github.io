@@ -14,11 +14,9 @@ elif [ $1 = "mountdmg"  ]; then
   echo "Mounting DMG $2"
   sudo hdiutil attach $2
 
-elif [ $1 = "unmountdmg"  ]; then
-    echo "Unmounting DMG $2"
-    sudo hdiutil eject $2
-    exit 0
-
+elif [ $1 = "listmountdmg"  ]; then
+    echo "Listing mounted DMG(s)"
+    sudo diskutil list | grep "disk image"
 
 fi
 
