@@ -4,7 +4,7 @@ currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
 
 cd /Users/$currentuser1/Downloads
 
-rm jcurl
+rm jef
 
 curl -O https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/jef
 

@@ -9,7 +9,17 @@ option2="$2"
 if [ $1 = "unmount"  ]; then
   echo "Unmounting $2"
   sudo diskutil unmountDisk force $2
-  exit 0
+
+elif [ $1 = "mountdmg"  ]; then
+  echo "Mounting DMG $2"
+  sudo hdiutil attach $2
+
+elif [ $1 = "unmountdmg"  ]; then
+    echo "Unmounting DMG $2"
+    sudo hdiutil eject $2
+    exit 0
+
+
 fi
 
 exit 0
