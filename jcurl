@@ -26,7 +26,7 @@ if [ $1 = "help"  ]; then
 fi
 
 cd /Users/$currentuser1/Downloads
-echo "Download folder is /Users/$currentuser1/Downloads"
+echo "`date`: Download folder is /Users/$currentuser1/Downloads"
 
 if [ ! -d $logfiledir1 ]; then
   echo "`date`: Folder $logfiledir1 not found..."
@@ -67,18 +67,16 @@ if [[ $option1 = "-s"  ]]; then
     x=$(echo $size_remote1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
     y=$(echo $size_local1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
 
-    echo "Filename is $filename1. Remote file size is $x. Local file is $y"
+    echo "`date`: Filename is $filename1. Remote file size is $x. Local file is $y"
 
     if [ "$x" = "$y" ]
     then
-    echo "`date`: local file, $filename1 is same as remote file..."
+    echo "`date`: Local file, $filename1 is same as remote file..."
     exit 0
     fi
 
     echo "`date`: Downloading $2"	>> ${logfile1}
-		echo " "
 		curl --progress-bar -O -J -L $2 >> ${logfile1} &
-		echo " "
 		echo "`date`: Finished downloading $i"	>> ${logfile1}
 fi
 
