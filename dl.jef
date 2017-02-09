@@ -1,0 +1,15 @@
+#!/bin/bash
+
+currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
+
+cd /Users/$currentuser1/Downloads
+
+rm jcurl
+
+curl -O https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/jef
+
+chmod 755 jef
+
+mv jef /usr/local/bin/
+
+exit 0
