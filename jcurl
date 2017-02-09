@@ -48,7 +48,7 @@ for i in $(cat "$list1")
 		echo "`date`: Downloading from $list1"	>> ${logfile1}
 		echo " "
 		echo "`date`: Downloading $i"	>> ${logfile1}
-		curl --progress-bar -O -J -L $i >> ${logfile1}
+		curl --progress-bar -O -J -L $i >> ${logfile1} &
 		echo " "
 		echo "`date`: Finished downloading $i"	>> ${logfile1}
 	done
@@ -57,7 +57,7 @@ fi
 if [[ $option1 = "-s"  ]]; then
 		echo "`date`: Downloading $2"	>> ${logfile1}
 		echo " "
-		curl --progress-bar -O -J -L $2 >> ${logfile1}
+		curl --progress-bar -O -J -L $2 >> ${logfile1} &
 		echo " "
 		echo "`date`: Finished downloading $i"	>> ${logfile1}
 fi

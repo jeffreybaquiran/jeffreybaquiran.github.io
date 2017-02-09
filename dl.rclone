@@ -1,0 +1,17 @@
+#!/bin/bash
+
+file1="rclone-v1.35-osx-amd64"
+
+currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
+
+cd /Users/$currentuser1/Downloads
+
+curl -O http://downloads.rclone.org/$file1.zip
+
+unzip $file1.zip
+
+sudo mv rclone-v1.35-osx-amd64/ /usr/local/bin/rclone.bin
+
+sudo chmod a+x /usr/local/bin/rclone.bin/rclone
+
+exit 0
