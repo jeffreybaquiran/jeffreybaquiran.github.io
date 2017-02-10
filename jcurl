@@ -10,6 +10,7 @@ logfiledir1="/Users/Shared/.jef"
 logfiledir2="/Users/Shared/.jef/jcurl"
 logfile1="$logfiledir1/jcurl/jcurl_`date +%Y-%m-%d_%H-%M-%S`.log"
 currentuser1=$(/usr/bin/last -1 -t console | awk '{print $1}')
+jef_dl_location="/Users/$currentuser1/Downloads/jef"
 
 if [ -z $1  ]; then
   echo "`date`"
@@ -25,8 +26,13 @@ if [ $1 = "help"  ]; then
   exit 0
 fi
 
-cd /Users/$currentuser1/Downloads
-echo "`date`: Download folder is /Users/$currentuser1/Downloads"
+if [ ! -d $jef_dl_location ]; then
+  echo "`date`: Creating folder $jef_dl_location"
+  sudo mkdir $jef_dl_location
+fi
+
+cd $jef_dl_location
+echo "`date`: Download folder is $jef_dl_location"
 
 if [ ! -d $logfiledir1 ]; then
   echo "`date`: Folder $logfiledir1 not found..."
@@ -81,7 +87,21 @@ if [[ $option1 = "-s"  ]]; then
 fi
 
 if [[ $option1 = "-y"  ]]; then
-    youtube-dl $2
+    yt_fn1=$(youtube-dl --get-filename $2)
+    yt_fn2=$(basename "$yt_fn1" .mp4)
+    echo $yt_fn2
+    echo "Downloading $yt_fn1..."
+#    youtube-dl -f 137 -o "%(title)s.%(ext)s" $2
+    youtube-dl -F $2
+    youtube-dl -f 140 $2
+#    youtube-dl $2
+    ffmpeg -i "$yt_fn2".m4a -vn -c:a copy "$yt_fn2"2.m4a
+    rm "$yt_fn2".m4a
+    echo "`date`: Finished downloading...""
+fi
+
+if [[ $option1 = "-convert"  ]]; then
+        ffmpeg -i "$2" -vn -c:a copy "$2"_new.m4a
 fi
 
 exit 0

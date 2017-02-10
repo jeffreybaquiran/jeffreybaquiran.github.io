@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "`date`: Uninstalling process started!"
+
+### jcurl
+sudo rm /usr/local/bin/jcurl
+#sudo ln -l /usr/local/bin/jcurl
+
+### youtube-dl
+sudo rm /usr/local/bin/youtube-dl
+#sudo ln -l /usr/local/bin/youtube-dl
+
+### ffmpeg
+sudo rm /usr/local/bin/ffmpeg
+#sudo ln -l /usr/local/bin/ffmpeg
+
+### rclone
+sudo rm /usr/local/bin/rclone
+sudo rm -rf /usr/local/bin/rclone.bin
+#sudo ln -l /usr/local/bin/rclone
+
+sudo rm -rf /usr/local/bin/jef
+
+echo "`date`: Finished!"
+
+exit 0
