@@ -80,4 +80,8 @@ if [[ $option1 = "-s"  ]]; then
 		echo "`date`: Finished downloading $i"	>> ${logfile1}
 fi
 
+if [[ $option1 = "-y"  ]]; then
+    youtube-dl $2
+fi
+
 exit 0
