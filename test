@@ -1,0 +1,9 @@
+rclone_url="http://downloads.rclone.org/rclone-v1.35-osx-amd64.zip"
+rclone_filename=$(basename $rclone_url)
+rclone_folder=$(basename $rclone_url .zip)
+sudo curl -O $rclone_url
+sudo unzip $rclone_filename
+sudo mv $rclone_folder /usr/local/bin/rclone.bin
+sudo chmod a+rx /usr/local/bin/rclone.bin/rclone
+sudo ln -s /usr/local/bin/rclone.bin/rclone /usr/local/bin/rclone
+sudo rm $rclone_filename
