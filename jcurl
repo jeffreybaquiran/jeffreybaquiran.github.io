@@ -86,6 +86,21 @@ if [[ $option1 = "-s"  ]]; then
 		echo "`date`: Finished downloading $i"	>> ${logfile1}
 fi
 
+if [[ $option1 = "-yl"  ]]; then
+    for i in $(cat "$list1")
+    do
+      yt_fn1=$(youtube-dl --get-filename $2)
+      yt_fn2=$(basename "$yt_fn1" .mp4)
+      echo $yt_fn2
+      echo "Downloading $yt_fn1..."
+      youtube-dl -F $2
+      youtube-dl -f 140 $2
+      ffmpeg -i "$yt_fn2".m4a -vn -c:a copy "$yt_fn2"2.m4a
+      rm "$yt_fn2".m4a
+      echo "`date`: Finished downloading..."
+    done
+fi
+
 if [[ $option1 = "-y"  ]]; then
     yt_fn1=$(youtube-dl --get-filename $2)
     yt_fn2=$(basename "$yt_fn1" .mp4)
