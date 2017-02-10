@@ -97,7 +97,7 @@ if [[ $option1 = "-y"  ]]; then
 #    youtube-dl $2
     ffmpeg -i "$yt_fn2".m4a -vn -c:a copy "$yt_fn2"2.m4a
     rm "$yt_fn2".m4a
-    echo "`date`: Finished downloading...""
+    echo "`date`: Finished downloading..."
 fi
 
 if [[ $option1 = "-convert"  ]]; then
