@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/jcurl -o /usr/local/bin/jcurl
+
+sudo chmod a+rx /usr/local/bin/jcurl
+
+exit 0
