@@ -1,0 +1,54 @@
+#!/bin/bash
+
+jef_bin_location="/usr/local/bin/jef"
+jef_log_location="/var/log/jef"
+jef_tmp_location="/tmp/jef"
+
+if [ ! -d $jef_bin_location ]; then
+  echo "`date`: Creating folder $jef_bin_location"
+  sudo mkdir $jef_bin_location
+fi
+
+if [ ! -d $jef_log_location ]; then
+  echo "`date`: Creating folder $jef_log_location"
+  sudo mkdir $jef_log_location
+fi
+
+if [ ! -d $jef_tmp_location ]; then
+  echo "`date`: Creating folder $jef_tmp_location"
+  sudo mkdir $jef_tmp_location
+fi
+
+cd $jef_tmp_location
+
+### jcurl
+sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/linux-ubuntu/jef -o $jef_bin_location/jcurl
+sudo chmod a+rx $jef_bin_location/jcurl
+sudo ln -s $jef_bin_location/jcurl /usr/local/bin/jcurl
+
+### youtube-dl
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o $jef_bin_location/youtube-dl
+sudo chmod a+rx $jef_bin_location/youtube-dl
+sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl
+
+### ffmpeg
+sudo add-apt-repository ppa:djcj/hybrid
+sudo apt-get update
+sudo apt-get install ffmpeg
+
+### rclone
+rclone_url="http://downloads.rclone.org/rclone-v1.35-linux-amd64.zip"
+rclone_filename=$(basename $rclone_url)
+rclone_folder=$(basename $rclone_url .zip)
+sudo curl -O $rclone_url
+sudo unzip $rclone_filename
+sudo mv $rclone_folder $jef_bin_location/rclone.bin
+sudo chmod a+rx $jef_bin_location/rclone.bin/rclone
+sudo ln -s $jef_bin_location/rclone.bin/rclone /usr/local/bin/rclone
+sudo rm $rclone_filename
+
+sudo rm -rf $jef_tmp_location
+
+echo "`date`: Finished!"
+
+exit 0
