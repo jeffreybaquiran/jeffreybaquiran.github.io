@@ -10,12 +10,29 @@ cd /jef/downloads
 if [[ $1 = "-l"  ]]; then
 for i in $(cat "$list1")
 	do
-		echo "`date`: Downloading from $list1"
-		echo " "
-		echo "`date`: Downloading $i"
-		curl --progress-bar -O -J -L $i &
-		echo " "
-		echo "`date`: Finished downloading $i"
+  filename1=$(basename $2)
+
+  if [ ! -f $filename1 ]; then
+  echo "`date`: $filename1 not exist... Will download the file."
+  fi
+
+  size_remote1=$(curl -sI "$2" | awk '/Content-Length/ { print $2 }')
+  size_local1=$(stat -c %s $filename1)
+
+  x=$(echo $size_remote1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
+  y=$(echo $size_local1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
+
+  echo "`date`: Filename is $filename1. Remote file size is $x. Local file is $y"
+
+  if [ "$x" = "$y" ]
+  then
+  echo "`date`: Local file, $filename1 is same as remote file. Skipping download..."
+  exit 0
+  fi
+
+  echo "`date`: Downloading $i"
+  curl --progress-bar -O -J -L $i &
+  echo "`date`: Finished downloading $i"
 	done
 fi
 
@@ -36,7 +53,7 @@ if [[ $1 = "-s"  ]]; then
 
     if [ "$x" = "$y" ]
     then
-    echo "`date`: Local file, $filename1 is same as remote file..."
+    echo "`date`: Local file, $filename1 is same as remote file. Skipping download..."
     exit 0
     fi
 
