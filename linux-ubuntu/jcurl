@@ -1,9 +1,11 @@
 #!/bin/bash
 
-list1=$2
-
 ### jcurl created by Jef
 ### This intended for his own use.
+
+list1=$2
+
+cd /jef/downloads
 
 if [[ $1 = "-l"  ]]; then
 for i in $(cat "$list1")
