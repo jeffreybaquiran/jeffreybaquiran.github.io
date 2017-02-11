@@ -27,7 +27,7 @@ if [[ $1 = "-s"  ]]; then
     fi
 
     size_remote1=$(curl -sI "$2" | awk '/Content-Length/ { print $2 }')
-    size_local1=$(stat -f '%z' "$filename1")
+    size_local1=$(du -sc $filename1 | tail -n1 | awk '{print $1}')
 
     x=$(echo $size_remote1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
     y=$(echo $size_local1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
