@@ -47,6 +47,17 @@ sudo chmod a+rx $jef_bin_location/rclone.bin/rclone
 sudo ln -s $jef_bin_location/rclone.bin/rclone /usr/local/bin/rclone
 sudo rm $rclone_filename
 
+### nginx
+sudo apt-get install nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
+
+
+### others
+sudo ufw disable
+sudo apt install unzip -y
+
+
 sudo rm -rf $jef_tmp_location
 
 echo "`date`: Finished!"

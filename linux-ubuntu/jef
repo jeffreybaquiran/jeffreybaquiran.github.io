@@ -3,6 +3,8 @@
 option1="$1"
 option2="$2"
 
+### General Commands
+
 if [ $1 = "shutdown"  ]; then
   echo "Shutting down..."
   sudo shutdown -h now
@@ -12,6 +14,64 @@ elif [ $1 = "update"  ]; then
   sudo apt-get update
   sudo apt-get dist-upgrade
   sudo apt-get upgrade
+
+### Others
+
+elif [ $1 = "-d"  ]; then
+
+        if [ ! -d /jef/downloads ]; then
+          echo "`date`: Creating folder /jef/downloads"
+          sudo mkdir /jef/downloads
+
+        cd /jef/downloads
+        
+        if [[ $2 = "-s"  ]]; then
+        filename1=$(basename $3)
+
+        if [ ! -f $filename1 ]; then
+        echo "`date`: $filename1 not exist... Will download the file."
+        fi
+
+        size_remote1=$(curl -sI "$2" | awk '/Content-Length/ { print $2 }')
+        size_local1=$(stat -f '%z' "$filename1")
+
+        x=$(echo $size_remote1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
+        y=$(echo $size_local1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
+
+        echo "`date`: Filename is $filename1. Remote file size is $x. Local file is $y"
+
+        if [ "$x" = "$y" ]
+        then
+        echo "`date`: Local file, $filename1 is same as remote file..."
+        exit 0
+        fi
+
+        echo "`date`: Downloading $2"
+        curl --progress-bar -O -J -L $2 &
+        echo "`date`: Finished downloading $i"
+
+        if [[ $2 = "-l"  ]]; then
+        for i in $(cat "$list1")
+        	do
+        		echo "`date`: Downloading from $list1"
+        		echo " "
+        		echo "`date`: Downloading $i"
+        		curl --progress-bar -O -J -L $i &
+        		echo " "
+        		echo "`date`: Finished downloading $i"
+        	done
+        fi
+
+      if [[ $1 = "yta"  ]]; then
+        yt_fn1=$(youtube-dl --get-filename $2)
+        yt_fn2=$(basename "$yt_fn1" .mp4)
+        echo $yt_fn2
+        echo "Downloading $yt_fn1..."
+        youtube-dl -F $2
+        youtube-dl -f 140 $2
+        ffmpeg -i "$yt_fn2".m4a -vn -c:a copy "$yt_fn2"2.m4a
+        rm "$yt_fn2".m4a
+        echo "`date`: Finished downloading..."
 
 fi
 
