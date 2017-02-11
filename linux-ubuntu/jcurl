@@ -62,7 +62,7 @@ if [[ $1 = "-s"  ]]; then
 		echo "`date`: Finished downloading..."
 fi
 
-if [[ $option1 = "-y"  ]]; then
+if [[ $1 = "-y"  ]]; then
     yt_fn1=$(youtube-dl --get-filename $2)
     yt_fn2=$(basename "$yt_fn1" .mp4)
     echo $yt_fn2
