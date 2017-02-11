@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "`date`: Starting!"
+
+while IFS=, read col1 col2 col3
+do
+    echo "$col1 | $col2 | $col3"
+done < csv1.csv
+
+exit 0
