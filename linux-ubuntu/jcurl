@@ -32,7 +32,7 @@ for i in $(cat "$list1")
 
   echo "`date`: Downloading $i"
   curl --progress-bar -O -J -L $i &
-  echo "`date`: Finished downloading $i"
+  echo "`date`: Finished downloading..."
 	done
 fi
 
@@ -59,7 +59,7 @@ if [[ $1 = "-s"  ]]; then
 
     echo "`date`: Downloading $2"
 		curl --progress-bar -O -J -L $2 &
-		echo "`date`: Finished downloading $i"
+		echo "`date`: Finished downloading..."
 fi
 
 if [[ $option1 = "-y"  ]]; then
