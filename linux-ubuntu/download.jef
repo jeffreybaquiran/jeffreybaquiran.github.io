@@ -48,6 +48,10 @@ sudo rm $rclone_filename
 ### install gdrive 
 cd /tmp; sudo curl -L -J -O "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
 
+### install jef.vnc service
+sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/linux-ubuntu/jef.vnc -o /usr/init.d/jef.vnc; sudo chmod a+x jef.vnc; sudo update-rc.d jef.vnc defaults
+
+
 ### nginx
 sudo apt-get install nginx
 sudo systemctl start nginx
