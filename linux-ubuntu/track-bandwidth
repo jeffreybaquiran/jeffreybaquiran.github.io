@@ -1,0 +1,17 @@
+#nload
+sudo apt-get install nload
+nload
+
+
+#iftop
+sudo apt-get install iftop
+sudo iftop -n
+
+#nethogs
+sudo apt-get install nethogs
+sudo nethogs
+
+
+#tcptrack
+sudo apt-get install tcptrack
+tcptrack -i enp1s0
