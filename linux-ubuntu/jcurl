@@ -12,7 +12,7 @@ if [[ ! -d "$downloadrepo"   ]]; then
 fi
 
 if [[ ! -d "$downloadrepo"/youtube   ]]; then
-	mkdir "$downloadrepo"
+	mkdir "$downloadrepo"/youtube
 fi
 
 cd "$downloadrepo"
