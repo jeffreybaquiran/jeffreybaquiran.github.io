@@ -45,6 +45,9 @@ sudo chmod a+rx $jef_bin_location/rclone.bin/rclone
 sudo ln -s $jef_bin_location/rclone.bin/rclone /usr/local/bin/rclone
 sudo rm $rclone_filename
 
+### install gdrive 
+cd /tmp; sudo curl -L -J -O "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
+
 ### nginx
 sudo apt-get install nginx
 sudo systemctl start nginx
