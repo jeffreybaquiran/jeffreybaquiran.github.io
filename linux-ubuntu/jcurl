@@ -5,7 +5,13 @@
 
 list1=$2
 
-cd /jef/downloads
+downloadrepo="/jack/downloads"
+
+if [[ ! -d "$downloadrepo"   ]]; then
+	mkdir "$downloadrepo"
+fi
+
+cd "$downloadrepo"
 
 if [[ $1 = "-l"  ]]; then
 for i in $(cat "$list1")
@@ -73,7 +79,5 @@ if [[ $1 = "-y"  ]]; then
     rm "$yt_fn2".m4a
     echo "`date`: Finished downloading..."
 fi
-
-
 
 exit 0
