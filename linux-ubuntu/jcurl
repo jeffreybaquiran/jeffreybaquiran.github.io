@@ -16,14 +16,14 @@ cd "$downloadrepo"
 if [[ $1 = "-l"  ]]; then
 for i in $(cat "$list1")
 	do
-  filename1=$(basename $2)
+  filename1=$(basename "$2")
 
   if [ ! -f $filename1 ]; then
   echo "`date`: $filename1 not exist... Will download the file."
   fi
 
   size_remote1=$(curl -sI "$2" | awk '/Content-Length/ { print $2 }')
-  size_local1=$(stat -c %s $filename1)
+  size_local1=$(stat -c %s "$filename1")
 
   x=$(echo $size_remote1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
   y=$(echo $size_local1 | awk '{ byte = $1 /1024/1024 ; print byte "MB" }')
