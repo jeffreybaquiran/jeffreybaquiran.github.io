@@ -86,4 +86,18 @@ if [[ $1 = "-y"  ]]; then
     echo "`date`: Finished downloading..."
 fi
 
+if [[ $1 = "-yc"  ]]; then
+    yt_fn1=$(youtube-dl --get-filename $2)
+    yt_fn2=$(basename "$yt_fn1" .mp4)
+    cd "$downloadrepo"/youtube
+    echo $yt_fn2
+    echo "Downloading $yt_fn1..."
+    youtube-dl -F $2
+    youtube-dl -f 140 $2
+    ffmpeg -ss $3 -i "$yt_fn2".m4a -t $4 -vn -c:a copy "$yt_fn2"2.m4a
+		aacgain -r -p -k -t "$yt_fn2"2.m4a
+    rm "$yt_fn2".m4a
+    echo "`date`: Finished downloading..."
+fi
+
 exit 0
