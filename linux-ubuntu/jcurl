@@ -94,7 +94,7 @@ if [[ $1 = "-yc"  ]]; then
     echo "Downloading $yt_fn1..."
     youtube-dl -F $2
     youtube-dl -f 140 $2
-    ffmpeg -ss $3 -i "$yt_fn2".m4a -t $4 -vn -c:a copy "$yt_fn2"2.m4a
+    ffmpeg -ss 00:$3 -i "$yt_fn2".m4a -t 00:$4 -vn -c:a copy "$yt_fn2"2.m4a
 		aacgain -r -p -k -t "$yt_fn2"2.m4a
     rm "$yt_fn2".m4a
     echo "`date`: Finished downloading..."
