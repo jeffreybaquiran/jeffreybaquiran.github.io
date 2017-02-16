@@ -91,10 +91,11 @@ if [[ $1 = "-yc"  ]]; then
 		filename1=$(basename "$yt_fn1")
 		extension="${filename1##*.}"
 		filename2="${filename1%.*}"
-    yt_fn2="$filename2"."$extension"
+    yt_fn2=$(basename $filename2"."$extension" .webm)
     cd "$downloadrepo"/youtube
     echo $yt_fn2
     echo "Downloading $yt_fn1..."
+		echo "Downloading $yt_fn2..."
     youtube-dl -F $2
     youtube-dl -f 140 $2
     ffmpeg -ss 00:$3 -i "$yt_fn2".m4a -t 00:$4 -vn -c:a copy "$yt_fn2"2.m4a
