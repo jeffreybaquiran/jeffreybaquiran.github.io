@@ -81,6 +81,7 @@ if [[ $1 = "-y"  ]]; then
     youtube-dl -F $2
     youtube-dl -f 140 $2
     ffmpeg -i "$yt_fn2".m4a -vn -c:a copy "$yt_fn2"2.m4a
+		aacgain -r -p -k -t "$yt_fn2"2.m4a
     rm "$yt_fn2".m4a
     echo "`date`: Finished downloading..."
 fi
