@@ -104,4 +104,23 @@ if [[ $1 = "-yc"  ]]; then
     echo "`date`: Finished downloading "$filename2".m4a..."
 fi
 
+if [[ $1 = "-yl"  ]]; then
+for i in $(cat "$list1")
+	do
+  yt_fn1=$(youtube-dl --get-filename $i)
+  filename1=$(basename "$yt_fn1")
+  extension="${filename1##*.}"
+  filename2="${filename1%.*}"
+  cd "$downloadrepo"/youtube
+  echo "`date`: Downloading $filename2.m4a..."
+  youtube-dl -F $i
+  youtube-dl -f 140 $i
+  ffmpeg -i "$filename2".m4a -vn -c:a copy "$filename2"B.m4a
+  aacgain -r -p -k -t "$filename2"B.m4a
+  rm "$filename2".m4a
+  mv "$filename2"B.m4a "$filename2".m4a
+  echo "`date`: Finished downloading "$filename2".m4a..."
+	done
+fi
+
 exit 0
