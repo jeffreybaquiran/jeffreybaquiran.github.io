@@ -88,7 +88,7 @@ fi
 
 if [[ $1 = "-yc"  ]]; then
     yt_fn1=$(youtube-dl --get-filename $2)
-    yt_fn2=$(basename "$yt_fn1" .mp4)
+    yt_fn2=$(basename "$yt_fn1" .mp4 .webm)
     cd "$downloadrepo"/youtube
     echo $yt_fn2
     echo "Downloading $yt_fn1..."
