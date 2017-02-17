@@ -1,0 +1,12 @@
+#!/bin/sh
+
+mkdir /jef
+cd /jef
+mkdir downloads
+mkdir logs
+mkdir scripts
+mkdir backups
+mkdir projects
+
+exit 0
+
