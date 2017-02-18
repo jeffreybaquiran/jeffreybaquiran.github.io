@@ -1,6 +1,7 @@
 #!/bin/bash
 
-### jcurl created by Jef
+### jcurl version 2.1 
+### created by Jef
 ### This intended for his own use.
 
 list1=$2
