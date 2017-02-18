@@ -6,7 +6,7 @@
 
 list1="$2"
 
-downloadrepo="/jack/downloads"
+downloadrepo="/hogan6tb/downloads"
 
 if [[ ! -d "$downloadrepo"   ]]; then
 	mkdir "$downloadrepo"
