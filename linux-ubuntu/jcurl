@@ -62,12 +62,11 @@ if [[ "$1" = "-s"  ]]; then
 
     echo "`date`: Filename is "$filename1". Remote file size is $x. Local file is $y"
 
-    if [ "$x" = "$y" ]
-    then
+    if [[ "$x" = "$y" ]]; then
     echo "`date`: Local file, "$filename1" is same as remote file. Skipping download..."
     exit 0
     else
-    echo "`date`: Downloading "$2"
+    echo "`date`: Downloading "$2""
     curl --progress-bar -O -J -L "$2" &
     echo "`date`: Finished downloading..."
     fi
