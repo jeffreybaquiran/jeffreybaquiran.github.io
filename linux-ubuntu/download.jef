@@ -32,7 +32,7 @@ sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl
 ### ffmpeg
 sudo add-apt-repository ppa:djcj/hybrid
 sudo apt-get update
-sudo apt-get install ffmpeg
+sudo apt-get install ffmpeg -y
 
 ### rclone
 rclone_url="http://downloads.rclone.org/rclone-v1.35-linux-amd64.zip"
@@ -52,7 +52,7 @@ cd /tmp; sudo curl -L -J -O "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJ
 sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/linux-ubuntu/service/jef.vnc -o /usr/init.d/jef.vnc; sudo chmod a+x jef.vnc; sudo update-rc.d jef.vnc defaults
 
 ###  install aacgain
-cd /tmp; sudo curl -O "http://packages.medibuntu.org//pool/free/a/aacgain/aacgain_1.9-0.0medibuntu1_i386.deb"; sudo dpkg -i "aacgain_1.9-0.0medibuntu1_i386.deb"; rm "aacgain_1.9-0.0medibuntu1_i386.deb"
+cd /tmp; sudo curl -O "http://www.deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo1+deb8u1_amd64.deb"; sudo dpkg -i "aacgain_1.9-dmo1+deb8u1_amd64.deb"; rm "aacgain_1.9-dmo1+deb8u1_amd64.deb"
 
 sudo rm -rf $jef_tmp_location
 
