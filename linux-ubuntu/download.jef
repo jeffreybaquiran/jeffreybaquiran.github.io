@@ -22,7 +22,7 @@ fi
 cd $jef_tmp_location
 
 ### jcurl
-sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/linux-ubuntu/jcurl -o /usr/local/bin/jef/jcurl; sudo chmod a+rx /usr/local/bin/jef/jcurl; sudo ln -s /usr/local/bin/jef/jcurl /usr/local/bin/jcurl
+sudo rm -o /usr/local/bin/jef/jcurl; sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/linux-ubuntu/jcurl -o /usr/local/bin/jef/jcurl; sudo chmod a+rx /usr/local/bin/jef/jcurl; sudo ln -s /usr/local/bin/jef/jcurl /usr/local/bin/jcurl
 
 ### youtube-dl
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o $jef_bin_location/youtube-dl
