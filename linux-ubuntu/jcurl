@@ -71,6 +71,7 @@ if [[ "$1" = "-s"  ]]; then
     curl --progress-bar -O -J -L "$2" &
     echo "`date`: Finished downloading..."
     fi
+fi    
 
 if [[ "$1" = "-y"  ]]; then
 		yt_fn1=$(youtube-dl --get-filename "$2")
