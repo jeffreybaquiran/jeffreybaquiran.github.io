@@ -119,7 +119,7 @@ for i in $(cat "$list1")
   aacgain -r -p -k -t "$filename2"B.m4a
   rm "$filename2".m4a
   mv "$filename2"B.m4a "$filename2".m4a
-  echo "`date`: Finished downloading '$filename2'.m4a..."
+  echo "`date`: Finished downloading $filename2.m4a..."
 	done
 fi
 
