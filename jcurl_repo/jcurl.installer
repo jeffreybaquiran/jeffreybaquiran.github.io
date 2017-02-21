@@ -26,15 +26,11 @@ echo ""
 
 ### jcurl
 echo "`date`: Installing jcurl..."
-sudo rm /usr/local/bin/jcurl; sudo rm /usr/local/bin/jef/jcurl; sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/jcurl_repo/jcurl -o /usr/local/bin/jef/jcurl; sudo chmod a+rx /usr/local/bin/jef/jcurl; sudo ln -s /usr/local/bin/jef/jcurl /usr/local/bin/jcurl; sudo touch /usr/local/bin/jef/jcurl.conf; sudo chmod a+rx /usr/local/bin/jef/jcurl.conf; echo "downloadrepo=" > /usr/local/bin/jef/jcurl.conf
-echo ""
+jcurl_url="https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/jcurl_repo/jcurl"; sudo rm /usr/local/bin/jcurl; sudo rm /usr/local/bin/jef/jcurl; sudo curl -L "$jcurl_url"  -o /usr/local/bin/jef/jcurl; sudo chmod a+rx /usr/local/bin/jef/jcurl; sudo ln -s /usr/local/bin/jef/jcurl /usr/local/bin/jcurl; sudo touch /usr/local/bin/jef/jcurl.conf; sudo chmod a+rx /usr/local/bin/jef/jcurl.conf; echo "downloadrepo=" > /usr/local/bin/jef/jcurl.conf; echo ""
 
 ### youtube-dl
 echo "`date`: Installing youtube-dl..."
-sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o $jef_bin_location/youtube-dl
-sudo chmod a+rx $jef_bin_location/youtube-dl
-sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl
-echo ""
+youtube-dl_url="https://yt-dl.org/downloads/latest/youtube-dl"; sudo curl -L "$youtube-dl_url" -o $jef_bin_location/youtube-dl; sudo chmod a+rx $jef_bin_location/youtube-dl; sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl; echo ""
 
 ### ffmpeg
 echo "`date`: Installing ffmpeg..."
@@ -45,25 +41,35 @@ echo ""
 
 ### install gdrive
 echo "`date`: Installing gdrive..."
-cd /tmp; sudo rm /usr/local/bin/gdrive; sudo curl -L -J -O "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
-echo ""
+cpu2=$(arch)
+
+if [[ "$cpu2" = "aarch64" ]]; then
+echo "`date`: Installing gdrive (arm64)..."
+gdrive_url="https://docs.google.com/uc?id=0B3X9GlR6EmbnamliN0Rld01oRVk&export=download"; cd /tmp; sudo rm /usr/local/bin/gdrive; sudo curl -L -J -O "$gdrive_url"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
+fi
+
+if [[ "$cpu2" = "x86_64" ]]; then
+echo "`date`: Installing gdrive (x64)..."
+gdrive_url="https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; cd /tmp; sudo rm /usr/local/bin/gdrive; sudo curl -L -J -O "$gdrive_url; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
+fi
 
 ### install aacgain
 cpu1=$(arch)
 
 if [[ "$cpu1" = "aarch64" ]]; then
 echo "`date`: Installing aacgain (arm64)..."
-cd /tmp; sudo curl -O "https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_arm64.deb"; sudo dpkg -i "aacgain_1.9-dmo2_arm64.deb"; rm "aacgain_1.9-dmo2_arm64.deb"; echo ""
+aacgain_url="https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_arm64.deb"; aacgain_file=$(basename $aacgain_url); cd /tmp; sudo curl -O "$aacgain_url"; sudo dpkg -i "$aacgain_file"; rm "$aacgain_file"; echo ""
 fi
 
 if [[ "$cpu1" = "x86_64" ]]; then
 echo "`date`: Installing aacgain (x64)..."
-cd /tmp; sudo curl -O "https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_i386.deb"; sudo dpkg -i "aacgain_1.9-dmo2_i386.deb"; rm "aacgain_1.9-dmo2_i386.deb"; echo ""
+aacgain_url="https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo1+deb8u1_amd64.deb"; aacgain_file=$(basename $aacgain_url); cd /tmp; sudo curl -O ""; sudo dpkg -i "$aacgain_url"; rm "$aacgain_url"; echo ""
 fi
 
 echo "`date`: Removing tmp files..."
 sudo rm -rf $jef_tmp_location
 
+echo ""
 echo "`date`: Finished!"
 
 exit 0
