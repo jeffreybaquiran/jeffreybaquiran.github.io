@@ -50,7 +50,7 @@ fi
 
 if [[ "$cpu2" = "x86_64" ]]; then
 echo "`date`: Installing gdrive x64..."
-gdrive_url="https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; cd /tmp; sudo rm /usr/local/bin/gdrive; sudo curl -L -J -O "$gdrive_url; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
+gdrive_url="https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; cd /tmp; sudo rm /usr/local/bin/gdrive; sudo curl -L -J -O "$gdrive_url"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
 fi
 
 ### install aacgain
@@ -63,7 +63,7 @@ fi
 
 if [[ "$cpu1" = "x86_64" ]]; then
 echo "`date`: Installing aacgain x64..."
-aacgain_url="https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo1+deb8u1_amd64.deb"; aacgain_file=$(basename $aacgain_url); cd /tmp; sudo curl -O ""; sudo dpkg -i "$aacgain_url"; rm "$aacgain_url"; echo ""
+aacgain_url="https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo1+deb8u1_amd64.deb"; aacgain_file=$(basename $aacgain_url); cd /tmp; sudo curl -O "$aacgain_url"; sudo dpkg -i "$aacgain_url"; rm "$aacgain_url"; echo ""
 fi
 
 echo "`date`: Removing tmp files..."
