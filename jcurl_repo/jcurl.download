@@ -1,0 +1,1 @@
+cd /tmp; curl -O https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/jcurl_repo/jcurl.installer; sudo chmod a+x jcurl.installer; sudo ./jcurl.installer
