@@ -1,0 +1,47 @@
+#!/bin/bash
+
+jef_bin_location="/usr/local/bin/jef"
+jef_log_location="/var/log/jef"
+jef_tmp_location="/tmp/jef"
+
+if [ ! -d $jef_bin_location ]; then
+  echo "`date`: Creating folder $jef_bin_location"
+  sudo mkdir $jef_bin_location
+fi
+
+if [ ! -d $jef_log_location ]; then
+  echo "`date`: Creating folder $jef_log_location"
+  sudo mkdir $jef_log_location
+fi
+
+if [ ! -d $jef_tmp_location ]; then
+  echo "`date`: Creating folder $jef_tmp_location"
+  sudo mkdir $jef_tmp_location
+fi
+
+cd $jef_tmp_location
+
+### jcurl
+sudo rm /usr/local/bin/jcurl; sudo rm /usr/local/bin/jef/jcurl; sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/linux-ubuntu/jcurl -o /usr/local/bin/jef/jcurl; sudo chmod a+rx /usr/local/bin/jef/jcurl; sudo ln -s /usr/local/bin/jef/jcurl /usr/local/bin/jcurl; sudo touch /usr/local/bin/jef/jcurl.conf; sudo chmod a+rx /usr/local/bin/jef/jcurl.conf; echo "downloadrepo=" > /usr/local/bin/jef/jcurl.conf
+
+### youtube-dl
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o $jef_bin_location/youtube-dl
+sudo chmod a+rx $jef_bin_location/youtube-dl
+sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl
+
+### ffmpeg
+sudo add-apt-repository ppa:djcj/hybrid
+sudo apt-get update
+sudo apt-get install ffmpeg -y
+
+### install gdrive
+cd /tmp; sudo curl -L -J -O "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
+
+### install aacgain
+cd /tmp; sudo curl -O "http://www.deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo1+deb8u1_i386.deb"; sudo dpkg -i "aacgain_1.9-dmo1+deb8u1_i386.deb"; rm "aacgain_1.9-dmo1+deb8u1_i386.deb"
+
+sudo rm -rf $jef_tmp_location
+
+echo "`date`: Finished!"
+
+exit 0
