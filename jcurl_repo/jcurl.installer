@@ -30,7 +30,7 @@ jcurl_url="https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.git
 
 ### youtube-dl
 echo "`date`: Installing youtube-dl..."
-youtube-dl_url="https://yt-dl.org/downloads/latest/youtube-dl"; sudo curl -L "$youtube-dl_url" -o $jef_bin_location/youtube-dl; sudo chmod a+rx $jef_bin_location/youtube-dl; sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl; echo ""
+sudo curl -L "https://yt-dl.org/downloads/latest/youtube-dl" -o /usr/local/bin/jef/youtube-dl; sudo chmod a+rx $jef_bin_location/youtube-dl; sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl; echo ""
 
 ### ffmpeg
 echo "`date`: Installing ffmpeg..."
