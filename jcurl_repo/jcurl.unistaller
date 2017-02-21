@@ -1,0 +1,17 @@
+#!/bin/bash
+
+jef_bin_location="/usr/local/bin/jef"
+
+sudo rm -rf $jef_tmp_location
+
+sudo rm /usr/local/bin/youtube-dl
+
+sudo rm /usr/local/bin/jcurl
+
+sudo apt-get purge -y ffmpeg
+
+sudo rm /usr/local/bin/gdrive
+
+cd /tmp; sudo curl -O "http://www.deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo1+deb8u1_i386.deb"; sudo dpkg -r "aacgain_1.9-dmo1+deb8u1_i386.deb"; rm "aacgain_1.9-dmo1+deb8u1_i386.deb"
+
+exit 0
