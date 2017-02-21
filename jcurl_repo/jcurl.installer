@@ -54,10 +54,12 @@ cpu1=$(arch)
 if [[ "$cpu1" = "aarch64" ]]; then
 echo "`date`: Installing aacgain (arm64)..."
 cd /tmp; sudo curl -O "https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_arm64.deb"; sudo dpkg -i "aacgain_1.9-dmo2_arm64.deb"; rm "aacgain_1.9-dmo2_arm64.deb"
+fi
 
 if [[ "$cpu1" = "x86_64" ]]; then
 echo "`date`: Installing aacgain (x64)..."
 cd /tmp; sudo curl -O "https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_i386.deb"; sudo dpkg -i "aacgain_1.9-dmo2_i386.deb"; rm "aacgain_1.9-dmo2_i386.deb"
+fi
 
 sudo rm -rf $jef_tmp_location
 
