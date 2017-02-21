@@ -38,7 +38,7 @@ sudo apt-get install ffmpeg -y
 cd /tmp; sudo curl -L -J -O "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
 
 ### install aacgain
-cd /tmp; curl -L -J -O sudo https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_arm64.deb"; sudo dpkg -i "aacgain_1.9-dmo2_arm64.deb"; rm "aacgain_1.9-dmo2_arm64.deb"
+cd /tmp; sudo curl -O https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_arm64.deb"; sudo dpkg -i "aacgain_1.9-dmo2_arm64.deb"; rm "aacgain_1.9-dmo2_arm64.deb"
 
 sudo rm -rf $jef_tmp_location
 
