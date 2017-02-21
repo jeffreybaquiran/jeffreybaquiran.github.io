@@ -21,28 +21,42 @@ fi
 
 cd $jef_tmp_location
 
+echo "`date`: Installation started..."
+echo ""
+
 ### jcurl
+echo "`date`: Installing jcurl..."
 sudo rm /usr/local/bin/jcurl; sudo rm /usr/local/bin/jef/jcurl; sudo curl -L https://raw.githubusercontent.com/jeffreybaquiran/jeffreybaquiran.github.io/master/jcurl_repo/jcurl -o /usr/local/bin/jef/jcurl; sudo chmod a+rx /usr/local/bin/jef/jcurl; sudo ln -s /usr/local/bin/jef/jcurl /usr/local/bin/jcurl; sudo touch /usr/local/bin/jef/jcurl.conf; sudo chmod a+rx /usr/local/bin/jef/jcurl.conf; echo "downloadrepo=" > /usr/local/bin/jef/jcurl.conf
+echo ""
+
 ### youtube-dl
+echo "`date`: Installing youtube-dl..."
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o $jef_bin_location/youtube-dl
 sudo chmod a+rx $jef_bin_location/youtube-dl
 sudo ln -s $jef_bin_location/youtube-dl /usr/local/bin/youtube-dl
+echo ""
 
 ### ffmpeg
+echo "`date`: Installing ffmpeg..."
 sudo add-apt-repository ppa:djcj/hybrid
 sudo apt-get update
 sudo apt-get install ffmpeg -y
+echo ""
 
 ### install gdrive
+echo "`date`: Installing gdrive..."
 cd /tmp; sudo curl -L -J -O "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
+echo ""
 
 ### install aacgain
 cpu1=$(arch)
 
 if [[ "$cpu1" = "aarch64" ]]; then
+echo "`date`: Installing aacgain (arm64)..."
 cd /tmp; sudo curl -O "https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_arm64.deb"; sudo dpkg -i "aacgain_1.9-dmo2_arm64.deb"; rm "aacgain_1.9-dmo2_arm64.deb"
 
 if [[ "$cpu1" = "x86_64" ]]; then
+echo "`date`: Installing aacgain (x64)..."
 cd /tmp; sudo curl -O "https://deb-multimedia.org/pool/main/a/aacgain/aacgain_1.9-dmo2_i386.deb"; sudo dpkg -i "aacgain_1.9-dmo2_i386.deb"; rm "aacgain_1.9-dmo2_i386.deb"
 
 sudo rm -rf $jef_tmp_location
