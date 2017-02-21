@@ -45,7 +45,7 @@ cpu2=$(arch)
 
 if [[ "$cpu2" = "aarch64" ]]; then
 echo "`date`: Installing gdrive (arm64)..."
-gdrive_url="https://docs.google.com/uc?id=0B3X9GlR6EmbnamliN0Rld01oRVk&export=download"; cd /tmp; sudo rm /usr/local/bin/gdrive; sudo curl -L -J -O "$gdrive_url"; sudo mv /tmp/gdrive-linux-x64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
+gdrive_url="https://docs.google.com/uc?id=0B3X9GlR6EmbnamliN0Rld01oRVk&export=download"; cd /tmp; sudo rm /usr/local/bin/gdrive; sudo curl -L -J -O "$gdrive_url"; sudo mv /tmp/gdrive-linux-arm64 /usr/local/bin/jef/gdrive; sudo chmod a+rx /usr/local/bin/jef/gdrive; sudo ln -s /usr/local/bin/jef/gdrive /usr/local/bin/gdrive
 fi
 
 if [[ "$cpu2" = "x86_64" ]]; then
